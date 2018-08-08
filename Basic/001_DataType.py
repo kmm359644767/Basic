@@ -662,10 +662,100 @@ print("d: ", d)
 
 d.setdefault('favorate')  #value is none
 print("d: ", d)
+print()
+print("="*43)
+
+#items/iteritems, keys/iterkeys, values/itervalues
+# dict.item(): 得到一个关于字典的列表，列表中的元素是由字典中的键和值组成的元组
+# D.items() -> list of D's (key, value) pairs, as 2-tuples
+dd = {"name":"qiwsir", "lang":"python", "web":"www.itdiffer.com"}
+dd_kv = dd.items()
+print("关于字典的一个列表：", dd_kv)
+print()
+print("="*43)
+
+# D.iteritems() -> an iterator over the (key, value) items of D
+# 得到的是一个“迭代器”，这个迭代器是关于“D.items()”的
+dd_iter = dd.__iter__()
+print("dd_iter 类型是：",type(dd_iter), "dd_iter 打印结果是：", dd_iter)
+#python3 无iteritems
+# Python 3.x 里面，iteritems() 和 viewitems() 这两个方法都已经废除了，
+# 而 items() 得到的结果是和 2.x 里面 viewitems() 一致的。
+# 在3.x 里 用 items()替换iteritems() ，可以用于 for 来循环遍历
+print()
+print("="*43)
+
+class Person(object):
+
+    def __init__(self, name, gender, **kw):
+        self.name = name
+        self.gender = gender
+        for k, v in kw.items():
+            setattr(self, k, v)
+
+p = Person('Bob', 'Male', age=18, course='Python')
+
+print(p.name)
+print(p.gender)
+print(p.age)
+print(p.course)
 
 print()
 print("="*43)
 
+#keys, values
+print("dd的值为：",dd)
+dd_key=dd.keys()
+print("dd_key 的值为：", dd_key, "类型：", type(dd_key))
+dd_val=dd.values()
+print("dd_val 的值为：", dd_val, "类型：", type(dd_val))
+
+
+print()
+print("="*43)
+
+#pop, popitem
+#D.pop(k[,d])是以字典的键为参数，删除指定键的键值对。
+print("dd的值为：",dd)
+#删除指定键"name"，返回了其值"qiwsir"。这样，在原字典中，“'name':'qiwsir'”这个键值对就被删除了
+dd.pop("name")
+print("dd的值为：",dd)
+#值得注意的是，pop函数中的参数是不能省略的，这跟列表中的那个pop有所不同
+dx=dd.pop("xxx","x-value")  #不存在xxx的键，则默认返回x-value,原dd不变，如果不设置第二个参数，不存在则直接报错
+print("dx的值为：",dx)
+print()
+print("="*43)
+#D.popitem()， 与list.pop()有相似之处，不用写参数（list.pop是可以不写参数）
+#随机删除一个，并将所删除的返回，如果字典是空的，就要报错了
+print("dd 被随机删除一个后：",dd.popitem())
+print()
+print("="*43)
+
+#update
+#字典d2更新入了d1那个字典，于是d1中就多了一些内容，把d2的内容包含进来了。d2当然还存在，并没有受到影响
+d1 = {"lang":"python"}
+d2 = {"song":"I dreamed a dream"}
+print("d1: ",d1, " & d2: ",d2)
+d1.update(d2)
+print("update d1: ",d1, " & d2: ",d2)
+#或者
+d2.update([("name","qiwsir"), ("web","itdiffer.com")])
+print("update d1: ",d1, " & d2: ",d2)
+
+print()
+print("="*43)
+
+#has_key
+#print(d2.has_key("web"))
+#python3 无该用法， 改成使用 in
+print("d2 : ", d2)
+if "web" in d2 :
+    print("has")
+else:
+    print("no")
+
+print()
+print("="*43)
 
 print()
 print("===========================================")

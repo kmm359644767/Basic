@@ -757,6 +757,63 @@ else:
 print()
 print("="*43)
 
+#set
+#现在要介绍另外一种类型的数据，英文是set，翻译过来叫做“集合”。它的特点是：有的可变，有的不可变；元素无次序，不可重复
+ss= set("qwertyuiopty")
+print("ss : ", ss)
+
+sl=set([123,"456","456"])
+print("sl :", sl)
+
+#使用{}的方式，但是这种方式不提倡使用，因为在某些情况下，python搞不清楚是字典还是集合
+
+sf={123,"456","123","456"}  #集合，不是字典
+print("sf : ",sf)
+
+#通过{}无法创建含有list/dict元素的set
+
+#{}集合：里面的元素都应该是可哈希类型，没有序列，不能用索引方式对其进行修改
+
+#hashable (可哈希的，即：不可变的)   官方解释：散列， 举例：str那样不能原地修改，就是hashable（可哈希）的
+#unhashable (不可哈希的， 即：可变的)  例如：如list/dict，都能原地修改
+
+#通过如下顺序，可自行获取该对象的方法和方法的使用方式
+#dir(set)
+#help(set.add)
+print()
+print("="*43)
+
+#set.add()
+a_set = {'a','i'}
+print(a_set, type(a_set))
+a_set.add("goo")
+print(a_set, type(a_set))
+a_set.add((123,456))
+print(a_set, type(a_set))
+print()
+print("="*43)
+
+#set.update
+ss2= {'1','2'}
+a_set.update(ss2)
+print(a_set,ss2)
+
+print()
+print("="*43)
+
+#pop,remove,discard,clear
+#pop 无参数，随机弹出一个元素，空集合使用pop将报错
+#remove 可输入一个元素，删除它，无该元素报错
+#discard 可输入一个元素，有则删除，无则返回none
+#clear 将集合清空
+
+
+#frozenset
+#顾名思义， 冻结了的set 不可变， 可哈希的
+
+
+print()
+print("="*43)
 print()
 print("===========================================")
 print("Done!!!")
